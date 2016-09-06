@@ -1,0 +1,35 @@
+spy:
+  environment:
+    ACCESS_TOKEN_TIMEOUT: '1000000'
+    ENV: rancher
+    PULSE_ANONYMOUSDBNAME: ego
+    PULSE_IDENTIFIABLEDBNAME: ego
+  external_links:
+  - 'Infrastructure/rethink:'
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: volume=true
+  tty: true
+  image: egopulse/universe:_backdoor
+  stdin_open: true
+earth:
+  environment:
+    ACCESS_TOKEN_TIMEOUT: '1000000'
+    ENV: rancher
+    PULSE_ANONYMOUSDBNAME: ego
+    PULSE_IDENTIFIABLEDBNAME: ego
+  external_links:
+  - 'Infrastructure/rethink:'
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: volume=true
+  tty: true
+  image: egopulse/universe:_web-latest
+  stdin_open: true
+phoenix:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: volume=true
+  tty: true
+  image: egopulse/universe:_asset-latest
+  stdin_open: true
