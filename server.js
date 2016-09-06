@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
     if (upgradeResult.code !== 0) {
       exec(`curl -X POST -H 'Content-type: application/json' --data '{"text":"Failed to upgrade staging to ${req.query.commit} \n ${upgradeResult.stdout} \n ${upgradeResult.stderr}"}' ${SLACK_WEBHOOK}`);
     } else {
-      exec(`curl -X POST -H 'Content-type: application/json' --data '{"text":"Staging is on ${req.query.commit}"}' ${SLACK_WEBHOOK}`);
+      exec(`curl -X POST -H 'Content-type: application/json' --data '{"text":"Staging is on \`${req.query.commit}\`"}' ${SLACK_WEBHOOK}`);
     }
   }
 });
